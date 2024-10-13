@@ -36,12 +36,17 @@ require("lazy").setup({
         checker = { enabled = true, notify = true }, -- automatically check for plugin updates
 })
 
-vim.cmd("colorscheme " .. ftvim.colorscheme)
+-- vim.cmd("colorscheme kanagawa")
 
 require("ftvim.utils.modules").learn_to_move()
 
 vim.schedule(function()
-        require("keymaps")
+         require("keymaps")
 end)
+
+require("lspconfig").clangd.setup({
+  autostart = true,
+  filetypes = { "c", "cpp", "h", "hpp" }
+})
 
 vim.cmd("TSToggle highlight")
